@@ -6,7 +6,6 @@ import './register.css';
 
 const USER_REGEX = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
 
 const Register = () => {
     const userRef = useRef();
@@ -56,8 +55,8 @@ const Register = () => {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/api/register',
-                JSON.stringify({ user, pwd }),
+            const response = await axios.post('http://localhost:5000/api/v1/register',
+                { email: user, password: pwd, name: name }, // Send data as an object
                 {
                     headers: { 'Content-Type': 'application/json' }, 
                     withCredentials: true
@@ -86,6 +85,7 @@ const Register = () => {
     }
 
     return (
+        <div className="main">
         <div className="box">
             {success ? (
                 <section>
@@ -196,6 +196,7 @@ const Register = () => {
                     </p>
                 </section>
             )}
+        </div>
         </div>
     )
 }

@@ -1,11 +1,11 @@
-import express from 'express';
+import express from 'express'; 
 import {connect} from './config/database.js';
 import  dotenv from 'dotenv';
 import bodyParser  from 'body-parser';
 import passport from 'passport';
 import { passportAuth } from './config/jwt-middleware.js';
 import apiRoutes from '../src/routes/index.js';
-
+import cors from "cors";
 dotenv.config();  // Load environment variables from .env file
 const port = process.env.PORT || 5000;
 
@@ -13,6 +13,10 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use('/api',apiRoutes);
 

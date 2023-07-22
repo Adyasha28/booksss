@@ -24,19 +24,21 @@ export const createBook = async (req, res) => {
 
 export const getBooks = async (req, res) => {
     try {
-        const response = await bookService.get(req.body.title);
-        return res.status(200).json({
-            success: true,
-            message: 'Successfully fetched a book',
-            data: response,
-            err: {}
-        });
+      const searchTitle = req.query.title;
+      const response = await bookService.searchByTitle(searchTitle); // Assuming the bookService has a method to search by title
+      return res.status(200).json({
+        success: true,
+        message: 'Successfully fetched a book',
+        data: response,
+        err: {}
+      });
     } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: 'something went wrong',
-            data: {},
-            err: error
-        });
+      return res.status(500).json({
+        success: false,
+        message: 'Something went wrong',
+        data: {},
+        err: error
+      });
     }
-}
+  };
+

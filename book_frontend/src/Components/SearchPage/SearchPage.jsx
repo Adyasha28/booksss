@@ -1,5 +1,6 @@
 import React from "react";
 import searchBg from "./searchBg.jpg"
+// import Navbar from "../Nabvar/Navbar"; // Import the Navbar component
 
 import {GiArchiveResearch} from 'react-icons/gi'
 import SearchCard from "./SearchCard";
@@ -14,27 +15,25 @@ function Search (){
                 height:'100vh'};
 
     const [search,setSearch]=useState("");
-    const [bookData,setData]=useState([]);
+    const [bookData,setBookData]=useState([]);
   
-    const searchBook=(evt)=>{
-        if(evt.key==="Enter")
-        {
-            axios.get('http://localhost:5000/api/search')
-            .then(res=>setData(res.data.items))
-            .catch(err=>console.log(err)) 
+    const searchBook = (evt) => {
+        if (evt.key === "Enter") {
+          const searchQuery = evt.target.value;
+          axios.get(`http://localhost:5000/api/v1/search?title=${searchQuery}`)
+            .then(res => setBookData(res.data.data)) // Update the state with the correct data
+            .catch(err => console.log(err));
         }
-    }
+      };
+    
 
-    const searchBoob=()=>{
-      
-            axios.get('http://localhost:5000/api/search')
-            .then(res=>setData(res.data.items))
-            .catch(err=>console.log(err))
-        }
+  
     
 
     return(
         <>
+        {/* <Navbar />  */}
+
         <div>
             
         <div className="header" style={myStyle} >
@@ -48,7 +47,7 @@ function Search (){
                        <input type="text" placeholder="Enter Your Book Name"
                        value={search} onChange={e=>setSearch(e.target.value)}
                        onKeyPress ={searchBook}/>
-                      <GiArchiveResearch className="search-icon" onClick={searchBoob} size={65} />
+                      <GiArchiveResearch className="search-icon" onClick={searchBook} size={65} />
                    </div>
                   
                </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import {BsFillBookmarkHeartFill,BsFillBookmarkXFill} from 'react-icons/bs';
 import { useAppContext } from "../Context/appcontext";
 import '../Wishlist/Wishlist.css';
+// import Navbar from "../Nabvar/Navbar"; // Import the Navbar component
 
 const Wishlist = () => {
 
@@ -15,10 +16,12 @@ const Wishlist = () => {
 
   return (
    <>
+    {/* <Navbar />  */}
+
     {
            favourites.length > 0 ?  favourites.map((item) => {
-                    let thumbnail=item.volumeInfo.imageLinks && item.volumeInfo.imageLinks.smallThumbnail;
-                    let amount=item.saleInfo.listPrice && item.saleInfo.listPrice.amount;
+                    let thumbnail=item.image ;
+                    let amount=item.price;
                     if(thumbnail!== undefined && amount !== undefined)
                     {
                         return (
@@ -27,7 +30,7 @@ const Wishlist = () => {
                             <div className="favcard">
                                 <img src={thumbnail} alt="" />
                                 <div className="bottom">
-                                    <h3 className="title">{item.volumeInfo.title}</h3>
+                                    <h3 className="title">{item.title}</h3>
                                     <p className="amount">&#8377;{amount}</p>
                                    
                                 </div>

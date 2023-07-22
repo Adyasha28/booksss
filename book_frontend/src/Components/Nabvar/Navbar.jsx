@@ -25,8 +25,8 @@ function Navbar(){
            <nav className={color?'main2':'main1'}>
              <div className="link"> 
                    <div className="port"  >
-                       <Link to="/" >
-                       <h2 className="heading"><BsFillBookFill size={35} className={color?"log1":"log"} /></h2></Link> 
+                       {/* <Link to="/" > */}
+                       <h2 className="heading"><BsFillBookFill size={35} className={color?"log1":"log"} /></h2>
                    
                <ul>
                  <li>
@@ -38,16 +38,16 @@ function Navbar(){
                  <li>
                  <Link to='./Wishlist' className={color?"navigation1":"navigation"}>Favourites</Link>
                  </li>
-                 <li>
-                 <Link to='./Register' className={color?"navigation1":"navigation"}>Login </Link>
-                 </li>
+                 {/* <li>
+                 <Link to='./logout' className={color?"navigation1":"navigation"}>Logout </Link>
+                 </li> */}
                </ul>
                </div>
              </ div>
              </ nav>
                   
              </div>
-             <div className="position"> <AiOutlineBars size={50} className="hamburger"/></div>
+             {/* <div className="position"> <AiOutlineBars size={50} className="hamburger"/></div> */}
            </div>
           
          

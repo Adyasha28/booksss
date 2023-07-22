@@ -3,7 +3,6 @@ import AuthContext from '../../context/AuthProvider';
 import './register.css';
 
 import axios from '../../api/axios';
-const LOGIN_URL = '/auth';
 
 const Login = () => {
     const { setAuth } = useContext(AuthContext);
@@ -27,10 +26,10 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ user, pwd }),
+            const response = await axios.post('http://localhost:5000/api/v1/auth',
+                { email: user, password: pwd}, // Send data as an object
                 {
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 'Content-Type': 'application/json' }, 
                     withCredentials: true
                 }
             );
@@ -57,6 +56,7 @@ const Login = () => {
     }
 
     return (
+    <div className='main'>
         <div className="box">
             {success ? (
                 <section>
@@ -101,6 +101,7 @@ const Login = () => {
                     </p>
                 </section>
             )}
+        </div>
         </div>
     )
 }

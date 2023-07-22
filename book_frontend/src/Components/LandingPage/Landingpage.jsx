@@ -4,11 +4,15 @@ import "./landingpage.css"
 import Characteristics from "../Characteristics/characteristics";
 import Footer from "../Footer/Footer";
 import { Link } from 'react-router-dom';
+// import Navbar from "../Nabvar/Navbar"; 
+
 
 function LandingPage(){
     return(
 
         <div>
+        {/* <Navbar />  */}
+
          <div className="container">
          <div className="left">
                 <div className="box1"> <h1 className="head1">Books</h1></div>

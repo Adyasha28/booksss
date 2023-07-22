@@ -20,10 +20,11 @@ export const signUp = async (req,res) => {
             message: 'Something went wrong',
             data: {},
             success: false,
-            err: err
+            err: err.message
         });
     }
 }
+
 
 export const login = async (req, res) => {
     
@@ -43,7 +44,7 @@ export const login = async (req, res) => {
             message: 'Something went wrong',
             data: {},
             success: false,
-            err: error
+            err: err.message
         });
     }
 }

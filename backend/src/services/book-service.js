@@ -12,7 +12,7 @@ class BookService {
 
     }
 
-    async get(searchString) {
+    async searchByTitle(searchString) {
         const books = await this.bookRepository.getAll(searchString);
         return books;
     }

@@ -10,7 +10,6 @@ router.post('/register',signUp);
 router.post('/auth',login);
 router.post('/bookEntry',createBook);
 
-
 router.get('/search',getBooks); 
 
 export default router; 
